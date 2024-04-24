@@ -28,6 +28,7 @@
 <body class="{{ $className }}">
     {{ $slot }}
     <script src="{{ asset('assets/js/tabler.min.js') }}" defer></script>
+    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
     @stack('js')
 </body>
 
