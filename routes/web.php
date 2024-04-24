@@ -13,6 +13,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('kategori', CategoryController::class)->except('show')
         ->names('category')
         ->parameter('kategori', 'category');
+    Route::resource('buku', BookController::class)->except('show')
+        ->names('book')
+        ->parameter('buku', 'book');
     Route::get('file/book/{id}', [FileController::class, 'book'])
         ->name('file.book');
 });
