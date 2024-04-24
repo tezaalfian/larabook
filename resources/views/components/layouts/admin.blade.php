@@ -38,20 +38,25 @@
                 </div>
                 <div class="collapse navbar-collapse" id="sidebar-menu">
                     <ul class="navbar-nav pt-lg-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./">
+                        @php
+                            $segment = Request::segment(1);
+                        @endphp
+                        <li class="nav-item @if ($segment == 'kategori') active @endif">
+                            <a class="nav-link" href="{{ route('category.index') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
-                                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
-                                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-category">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M4 4h6v6h-6z" />
+                                        <path d="M14 4h6v6h-6z" />
+                                        <path d="M4 14h6v6h-6z" />
+                                        <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
                                     </svg>
                                 </span>
                                 <span class="nav-link-title">
-                                    Home
+                                    Kategori
                                 </span>
                             </a>
                         </li>
