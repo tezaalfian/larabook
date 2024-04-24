@@ -14,9 +14,19 @@
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item dropdown">
-                        <a href="#" class="btn">
-                            Login
-                        </a>
+                        @auth
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                            this.closest('form').submit();"
+                                    class="btn">Logout</a>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn">
+                                Login
+                            </a>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -25,22 +35,25 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <div class="navbar">
                     <div class="container-xl">
+                        @php
+                            $segment = request()->segment(1);
+                        @endphp
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
+                            <li class="nav-item {{ $segment == '' ? 'active' : '' }}">
                                 <a class="nav-link" href="#">
                                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
-                                            class="icon icon-tabler icons-tabler-outline icon-tabler-dashboard">
+                                            class="icon icon-tabler icons-tabler-outline icon-tabler-home">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M12 13m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                            <path d="M13.45 11.55l2.05 -2.05" />
-                                            <path d="M6.4 20a9 9 0 1 1 11.2 0z" />
+                                            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                                            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                                            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
                                         </svg>
                                     </span>
                                     <span class="nav-link-title">
-                                        Dashboard
+                                        Home
                                     </span>
                                 </a>
                             </li>
@@ -50,7 +63,13 @@
             </div>
         </header>
         <div class="page-wrapper">
-            {{ $heading }}
+            <div class="page-header d-print-none">
+                <div class="container-xl">
+                    <div class="row g-2 align-items-center">
+                        {{ $heading }}
+                    </div>
+                </div>
+            </div>
             <div class="page-body">
                 <div class="container-xl">
                     {{ $slot }}
