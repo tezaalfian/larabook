@@ -21,6 +21,17 @@ class HomeController extends Controller
         return view('home', compact('books', 'categories'));
     }
 
+    public function myBook()
+    {
+        return view('home.mybook', [
+            'books' => Order::select('books.id', 'title', 'author', 'cover', 'category_name')
+                ->join('books', 'books.id', '=', 'orders.book_id')
+                ->where('user_id', Auth::id())
+                ->orderByDesc('orders.created_at')
+                ->simplePaginate(5),
+        ]);
+    }
+
     public function book(Book $book)
     {
         return view('home.book', compact('book'));

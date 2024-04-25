@@ -23,8 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::post('e-book/{book}/order', [OrderController::class, 'store'])
         ->name('order.store')
         ->whereNumber('book');
-    Route::get('e-book/order', [HomeController::class, 'order'])
+    Route::get('home/order', [HomeController::class, 'order'])
         ->name('home.order');
+    Route::get('home/my-book', [HomeController::class, 'myBook'])
+        ->name('home.mybook');
     Route::get('order', [OrderController::class, 'index'])->name('order.index');
 });
 
