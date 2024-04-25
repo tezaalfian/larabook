@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('e-book/{book}', [HomeController::class, 'book'])->name('home.book')->whereNumber('book');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('kategori', CategoryController::class)->except('show')
         ->names('category')
         ->parameter('kategori', 'category');
