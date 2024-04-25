@@ -12,6 +12,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderController extends Controller
 {
+    public function index(Request $request)
+    {
+        $orders = Order::orderByDesc('created_at');
+        if ($request->status) {
+            $orders->where('status', $request->status);
+        }
+        $orders = $orders->cursorPaginate(10)->withQueryString();
+        return view('order.index', compact('orders'));
+    }
+
     public function store(string $id, Request $request)
     {
         $book = Book::select('id', 'title', 'price')->findOrFail($id);

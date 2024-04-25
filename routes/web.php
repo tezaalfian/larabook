@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
         ->whereNumber('book');
     Route::get('e-book/order', [HomeController::class, 'order'])
         ->name('home.order');
+    Route::get('order', [OrderController::class, 'index'])->name('order.index');
 });
 
 require __DIR__ . '/auth.php';
