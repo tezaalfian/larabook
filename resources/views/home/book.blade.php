@@ -39,7 +39,7 @@
                         <h3 class="m-0">{{ $book->author }}</h3>
                         <p class="text-secondary">{{ $book->published_date->isoFormat('MMMM YYYY') }} -
                             {{ $book->publisher }}</p>
-                        <form action="#" method="post">
+                        <form action="{{ route('order.store', $book->id) }}" method="post">
                             @csrf
                             <button class="btn btn-primary mb-4">Beli E-Book (@currency($book->price))</button>
                         </form>
