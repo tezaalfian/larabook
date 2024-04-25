@@ -15,13 +15,25 @@
                 <div class="navbar-nav flex-row order-md-last">
                     <div class="nav-item dropdown">
                         @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
+                                aria-label="Open user menu">
+                                <span class="avatar avatar-sm"
+                                    style="background-image: url({{ asset('storage/' . Auth::user()->photo) }})"></span>
+                                <div class="d-none d-xl-block ps-2">
+                                    <div>{{ Auth::user()->name }}</div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <a href="{{ route('profile.edit') }}" class="dropdown-item">Profile</a>
+                                <div class="dropdown-divider m-0"></div>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a :href="route('logout')"
+                                        onclick="event.preventDefault();
                                             this.closest('form').submit();"
-                                    class="btn">Logout</a>
-                            </form>
+                                        class="dropdown-item cursor-pointer">Logout</a>
+                                </form>
+                            </div>
                         @else
                             <a href="{{ route('login') }}" class="btn">
                                 Login

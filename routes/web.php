@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FileController;
@@ -28,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('home/my-book', [HomeController::class, 'myBook'])
         ->name('home.mybook');
     Route::get('order', [OrderController::class, 'index'])->name('order.index');
+
+    Route::get('profil', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profil', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 require __DIR__ . '/auth.php';

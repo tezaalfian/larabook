@@ -18,14 +18,14 @@
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                             aria-label="Open user menu">
                             <span class="avatar avatar-sm"
-                                style="background-image: url({{ asset('storage/' . Auth::user()->foto) }})"></span>
+                                style="background-image: url({{ asset('storage/' . Auth::user()->photo) }})"></span>
                             <div class="d-none d-xl-block ps-2">
                                 <div>{{ Auth::user()->name }}</div>
                                 <div class="mt-1 small text-secondary">{{ Auth::user()->role }}</div>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            {{-- <a href="{{ route('profile.edit') }}" class="dropdown-item">Profile</a> --}}
+                            <a href="{{ route('profile.edit') }}" class="dropdown-item">Profile</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a :href="route('logout')"
@@ -119,14 +119,14 @@
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                             aria-label="Open user menu">
                             <span class="avatar avatar-sm"
-                                style="background-image: url({{ asset('storage/' . Auth::user()->foto) }})"></span>
+                                style="background-image: url({{ asset('storage/' . Auth::user()->photo) }})"></span>
                             <div class="d-none d-xl-block ps-2">
                                 <div>{{ Auth::user()->name }}</div>
                                 <div class="mt-1 small text-muted">{{ Auth::user()->role }}</div>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            {{-- <a href="{{ route('profile.edit') }}" class="dropdown-item">Profile</a> --}}
+                            <a href="{{ route('profile.edit') }}" class="dropdown-item">Profile</a>
                             <div class="dropdown-divider m-0"></div>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
