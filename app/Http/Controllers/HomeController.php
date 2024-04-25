@@ -18,4 +18,9 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('home', compact('books', 'categories'));
     }
+
+    public function book(Book $book)
+    {
+        return view('home.book', compact('book'));
+    }
 }

@@ -39,7 +39,7 @@
             <div class="row row-cards">
                 @foreach ($books as $item)
                     <div class="col-md-3 col-6">
-                        <a href="#" style="text-decoration: none;">
+                        <a href="{{ route('home.book', $item->id) }}" style="text-decoration: none;">
                             <div class="card h-100">
                                 <div class="card-status-bottom bg-info"></div>
                                 <div class="img-responsive img-responsive-3x4 card-img-top"

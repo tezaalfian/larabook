@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('e-book/{book}', [HomeController::class, 'book'])->name('home.book');
 
 Route::middleware('auth')->group(function () {
     Route::resource('kategori', CategoryController::class)->except('show')
