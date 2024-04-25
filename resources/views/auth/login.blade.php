@@ -11,7 +11,13 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label class="form-label required">Password</label>
+            <label class="form-label required">Password
+                @if (Route::has('password.request'))
+                    <span class="form-label-description">
+                        <a href="{{ route('password.request') }}">Lupa password</a>
+                    </span>
+                @endif
+            </label>
             <input type="password" class="form-control" autocomplete="off" name="password">
             @error('password')
                 <div class="invalid-feedback">{{ $message }}</div>
