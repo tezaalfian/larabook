@@ -27,6 +27,7 @@ class HomeController extends Controller
             'books' => Order::select('books.id', 'title', 'author', 'cover', 'category_name')
                 ->join('books', 'books.id', '=', 'orders.book_id')
                 ->where('user_id', Auth::id())
+                ->where('status', 'settlement')
                 ->orderByDesc('orders.created_at')
                 ->simplePaginate(5),
         ]);
