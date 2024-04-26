@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    public function book(string $id)
+    public function book(string $id, Request $request)
     {
         $book = Book::select('id', 'title', 'file')->findOrFail($id);
-
+        if ($request->user()->cannot('view', $book)) {
+            abort(403);
+        }
         try {
             return response()
                 ->file(Storage::path($book->file), [

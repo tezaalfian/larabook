@@ -13,7 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         apiPrefix: 'api',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'role' => \App\Http\Middleware\EnsureRoleUserValid::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
